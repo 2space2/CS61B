@@ -79,6 +79,7 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
+        if (isEmpty()) return null;
         T tmp = items[first];
         items[first] = null;
         first = first == items.length - 1 ? 0 : first + 1;
@@ -88,6 +89,7 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast() {
+        if (isEmpty()) return null;
         T tmp = items[last];
         items[last] = null;
         last = last == 0 ? items.length - 1 : last - 1;
@@ -97,9 +99,21 @@ public class ArrayDeque<T> {
     }
 
     public T get(int index) {
-        if (index > size + 1 || index < 0) return null;
+        if (index >= size  || index < 0) return null;
         if (last < first) return items[(first + index) % items.length];
         else return items[first + index];
     }
-
+    public static  void main(String[] args) {
+        LinkedListDeque<Integer> hi = new LinkedListDeque<>();
+        hi.addLast(0);
+        hi.addLast(1);
+        hi.addLast(2);
+        hi.isEmpty();
+        System.out.println(hi.removeLast());
+        System.out.println(hi.removeFirst());
+        System.out.println(hi.removeLast());
+        System.out.println(hi.removeLast());
+        System.out.println(hi.removeLast());
+        System.out.println(hi.removeLast());
+    }
 }
