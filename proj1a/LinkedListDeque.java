@@ -12,7 +12,7 @@ public class LinkedListDeque<T> {
 
         private T getRe(int index, Linknode tmp) {
             if(index == 0) return (T) tmp.item;
-            else return getRe(index-1, tmp.next);
+            else return (T) getRe(index-1, tmp.next);
         }
     }
 
