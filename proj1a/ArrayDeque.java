@@ -103,17 +103,5 @@ public class ArrayDeque<T> {
         if (last < first) return items[(first + index) % items.length];
         else return items[first + index];
     }
-    public static  void main(String[] args) {
-        LinkedListDeque<Integer> hi = new LinkedListDeque<>();
-        hi.addLast(0);
-        hi.addLast(1);
-        hi.addLast(2);
-        hi.isEmpty();
-        System.out.println(hi.removeLast());
-        System.out.println(hi.removeFirst());
-        System.out.println(hi.removeLast());
-        System.out.println(hi.removeLast());
-        System.out.println(hi.removeLast());
-        System.out.println(hi.removeLast());
-    }
+
 }

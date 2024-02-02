@@ -91,7 +91,7 @@ public class LinkedListDeque<T> {
     public T getRecursive(int index) {
         return front.getRe(index, front.next);
     }
-    public static  void main(String[] args) {
+    private static  void main(String[] args) {
         LinkedListDeque<Integer> hi = new LinkedListDeque<>();
         hi.addFirst(0);
         hi.addFirst(1);
