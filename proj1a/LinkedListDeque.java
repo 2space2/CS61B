@@ -27,8 +27,7 @@ public class LinkedListDeque<T> {
     }
 
     public boolean isEmpty() {
-        if (size==0) return true;
-        else return false;
+        return size == 0;
     }
 
     public void addFirst(T item) {
@@ -91,19 +90,5 @@ public class LinkedListDeque<T> {
     public T getRecursive(int index) {
         return front.getRe(index, front.next);
     }
-    private static  void main(String[] args) {
-        LinkedListDeque<Integer> hi = new LinkedListDeque<>();
-        hi.addFirst(0);
-        hi.addFirst(1);
-        hi.addFirst(2);
-        hi.addFirst(3);
-        hi.addFirst(4);
-        hi.isEmpty();
-        System.out.println(hi.removeLast());
-        System.out.println(hi.removeLast());
-        System.out.println(hi.removeLast());
-        System.out.println(hi.removeLast());
-        System.out.println(hi.removeLast());
-        System.out.println(hi.removeLast());
-    }
+
 }
