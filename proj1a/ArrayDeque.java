@@ -59,7 +59,7 @@ public class ArrayDeque<T> {
             resize(items.length * 2);
         }
         if (last == items.length - 1) {
-            last = 0;
+            last = -1;
         }
         last++;
         if (size == 0) {
@@ -127,5 +127,6 @@ public class ArrayDeque<T> {
             return items[first + index];
         }
     }
+
 
 }

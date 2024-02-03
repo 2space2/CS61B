@@ -1,18 +1,23 @@
 public class LinkedListDeque<T> {
-    private class Linknode<T> {
-        public T item;
-        public Linknode first;
-        public Linknode next;
 
-        public Linknode(T x, Linknode f, Linknode r) {
+    private class Linknode<T> {
+
+        private T item;
+        private Linknode first;
+        private Linknode next;
+
+        Linknode(T x, Linknode f, Linknode r) {
             item = x;
             first = f;
             next = r;
         }
 
         private T getRe(int index, Linknode tmp) {
-            if(index == 0) return (T) tmp.item;
-            else return (T) getRe(index-1, tmp.next);
+            if (index == 0) {
+                return (T) tmp.item;
+            } else {
+                return (T) getRe(index - 1, tmp.next);
+            }
         }
     }
 
@@ -48,15 +53,17 @@ public class LinkedListDeque<T> {
 
     public  void printDeque() {
         Linknode<T> p = front.next;
-        while (p!=front) {
+        while (p != front) {
             System.out.print(p.item);
             System.out.print(' ');
             p = p.next;
         }
     }
 
-    public T removeFirst(){
-        if(isEmpty()) return null;
+    public T removeFirst() {
+        if (isEmpty()) {
+            return null;
+        }
         Linknode<T> tmp = front.next;
         front.next.next.first = front;
         front.next = front.next.next;
@@ -65,21 +72,24 @@ public class LinkedListDeque<T> {
 
     }
 
-    public T removeLast(){
-        if(isEmpty()) return null;
+    public T removeLast() {
+        if (isEmpty()) {
+            return null;
+        }
         T tmp = (T) front.first.item;
         front.first.first.next = front;
         front.first = front.first.first;
         size--;
 
         return tmp;
-        
     }
 
     public T get(int index) {
-        if(index < 0 || index >= size) return null;
+        if (index < 0 || index >= size) {
+            return null;
+        }
         Linknode<T> tmp = front;
-        for(int i = 0;i <= index;i++) {
+        for (int i = 0; i <= index; i++) {
             tmp = tmp.next;
         }
         return tmp.item;
@@ -90,5 +100,6 @@ public class LinkedListDeque<T> {
     public T getRecursive(int index) {
         return front.getRe(index, front.next);
     }
+
 
 }
