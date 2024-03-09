@@ -9,6 +9,7 @@ public class Percolation {
     private int length;
     private int top;
     private int bottom;
+   // private boolean percolation = false;
     private final int[][] dir = {{-1, 0}, {1, 0}, {0, -1}, {0, 1} };
 
 
@@ -59,6 +60,10 @@ public class Percolation {
         return numOfOpen;
     }         // number of open sites
     public boolean percolates() {
+        if (length == 1) {
+            return isOpen(0, 0);
+        }
+        //return percolation;
         return set.connected(top, bottom);
     }             // does the system percolate?
     private int xyto1(int x, int y) {

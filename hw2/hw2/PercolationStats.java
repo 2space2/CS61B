@@ -3,13 +3,13 @@ import edu.princeton.cs.introcs.StdRandom;
 import edu.princeton.cs.introcs.StdStats;
 
 public class PercolationStats {
-    private int[] result;
+    private double[] result;
     private Percolation task;
     public PercolationStats(int N, int T, PercolationFactory pf) {
         if (N <= 0 || T <= 0) {
             throw new IllegalArgumentException();
         }
-        result = new int[T];
+        result = new double[T];
         int[] op = new int[N * N];
         for (int i = 0; i < op.length; i++) {
             op[i] = i;
@@ -24,7 +24,7 @@ public class PercolationStats {
                 task.open(xy[0], xy[1]);
                 j++;
             }
-            result[i] =  task.numberOfOpenSites();
+            result[i] =  (double) task.numberOfOpenSites() / (N * N);
         }
     }
     public double mean() {
@@ -46,8 +46,11 @@ public class PercolationStats {
     /*
     public static void main(String[] args) {
         PercolationFactory pf = new PercolationFactory();
-        PercolationStats t = new PercolationStats(20, 10, pf);
+        PercolationStats t = new PercolationStats(20, 1000, pf);
         System.out.println(t.mean());
+        System.out.println(t.stddev());
+        System.out.println(t.confidenceLow());
+        System.out.println(t.confidenceHigh());
     }*/
 }
 
