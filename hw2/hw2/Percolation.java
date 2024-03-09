@@ -18,8 +18,8 @@ public class Percolation {
         }
         map = new int[N][N];
         length = N;
-        top = N;
-        bottom = N + 1;
+        top = N * N;
+        bottom = top + 1;
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 map[i][j] = 0;
