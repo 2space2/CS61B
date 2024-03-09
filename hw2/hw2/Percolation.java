@@ -28,8 +28,8 @@ public class Percolation {
         numOfOpen = 0;
         set = new WeightedQuickUnionUF(N * N + 2);
         for (int i = 0; i < N; i++) {
-            set.union(top, XYto1(0, i));
-            set.union(bottom, XYto1(N - 1, i));
+            set.union(top, xyto1(0, i));
+            set.union(bottom, xyto1(N - 1, i));
         }
     }
     public void open(int row, int col)   {
@@ -53,7 +53,7 @@ public class Percolation {
         if (!valueCheck(row, col)) {
             throw new IndexOutOfBoundsException();
         }
-        return set.connected(top, XYto1(row, col)) && isOpen(row, col);
+        return set.connected(top, xyto1(row, col)) && isOpen(row, col);
     } // is the site (row, col) full?
     public int numberOfOpenSites()  {
         return numOfOpen;
@@ -61,7 +61,7 @@ public class Percolation {
     public boolean percolates() {
         return set.connected(top, bottom);
     }             // does the system percolate?
-    private int XYto1(int x, int y) {
+    private int xyto1(int x, int y) {
         return x * length + y;
     }
     private void openCheck(int row, int col) {
@@ -72,14 +72,16 @@ public class Percolation {
                 continue;
             }
             if (isOpen(rowCheck, colCheck)) {
-                set.union(XYto1(row, col), XYto1(rowCheck, colCheck));
+                set.union(xyto1(row, col), xyto1(rowCheck, colCheck));
             }
         }
     }
     private boolean valueCheck(int row, int col) {
         if (row < 0 || row >= length) {
             return false;
-        } else return col >= 0 && col < length;
+        } else {
+            return col >= 0 && col < length;
+        }
     }
     public static void main(String[] args) {
 

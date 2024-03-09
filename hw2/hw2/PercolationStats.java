@@ -9,17 +9,20 @@ public class PercolationStats {
         if (N <= 0 || T <= 0) {
             throw new IllegalArgumentException();
         }
-        result = new int[N];
-        for (int i = 0; i < T ;i++) {
+        result = new int[T];
+        int[] op = new int[N * N];
+        for (int i = 0; i < op.length; i++) {
+            op[i] = i;
+        }
+        for (int i = 0; i < T; i++) {
             task = pf.make(N);
-            int randomX = StdRandom.uniform(N);
-            int randomY = StdRandom.uniform(N);
+            StdRandom.shuffle(op);
+            int[] xy = new int[2];
+            int j = 0;
             while (!task.percolates()) {
-                while (!task.isOpen(randomX, randomY)) {
-                    randomX = StdRandom.uniform(N);
-                    randomY = StdRandom.uniform(N);
-                }
-                task.open(randomX, randomY);
+                numToXY(op[j], N, xy);
+                task.open(xy[0], xy[1]);
+                j++;
             }
             result[i] =  task.numberOfOpenSites();
         }
@@ -36,6 +39,16 @@ public class PercolationStats {
     public double confidenceHigh() {
         return mean() + 1.96 * Math.sqrt(stddev()) / result.length;
     }
+    private void numToXY(int n, int length, int[] xy) {
+        xy[0] = n / length;
+        xy[1] = n % length;
+    }
+    /*
+    public static void main(String[] args) {
+        PercolationFactory pf = new PercolationFactory();
+        PercolationStats t = new PercolationStats(20, 10, pf);
+        System.out.println(t.mean());
+    }*/
 }
 
 
