@@ -34,10 +34,10 @@ public class PercolationStats {
         return StdStats.stddev(result);
     }
     public double confidenceLow() {
-        return mean() - 1.96 * Math.sqrt(stddev()) / result.length;
+        return mean() - 1.96 * Math.sqrt(stddev()) / Math.sqrt(result.length);
     }
     public double confidenceHigh() {
-        return mean() + 1.96 * Math.sqrt(stddev()) / result.length;
+        return mean() + 1.96 * Math.sqrt(stddev()) / Math.sqrt(result.length);
     }
     private void numToXY(int n, int length, int[] xy) {
         xy[0] = n / length;
