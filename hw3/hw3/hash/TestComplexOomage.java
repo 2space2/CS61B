@@ -39,17 +39,22 @@ public class TestComplexOomage {
     @Test
     public void testWithDeadlyParams() {
         List<Oomage> deadlyList = new ArrayList<>();
-        List<Integer> list = new ArrayList<>();
 
-        list.add(100);
+
+
         for (int j = 0; j < 256; j+=10) {
+
             for (int i = 0; i < 256; i+=10) {
+                List<Integer> list = new ArrayList<>();
+                list.add(100);
+                list.add(j);
                 list.add(i);
                 deadlyList.add(new ComplexOomage(list));
-                list.removeLast();
+
             }
-            list.removeLast();
-            list.add(j);
+
+
+
         }
 
         assertTrue(OomageTestUtility.haveNiceHashCodeSpread(deadlyList, 10));
