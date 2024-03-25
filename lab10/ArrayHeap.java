@@ -181,8 +181,8 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         Node last = contents[size];
         Node peek = contents[1];
         contents[1] = last;
-        contents[size] = null;
         sink(1);
+        contents[size] = null;
         size--;
 
         return peek.myItem;
@@ -219,7 +219,6 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         int parent = parentIndex(i);
         if (min(i, parent) == i) {
             swim(i);
-            sink(i);
         } else {
             sink(i);
         }
@@ -454,6 +453,12 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
             assertEquals(expected[i], pq.removeMin());
             i += 1;
         }
+    }
+    @Test
+    public void test() {
+        ExtrinsicPQ<String> pq = new ArrayHeap<>();
+        pq.insert("c", 3);
+        pq.removeMin();
     }
 
 }
