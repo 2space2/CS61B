@@ -49,7 +49,7 @@ public class Solver {
             list.add(0,init.word);
             init = init.prev;
         }
-        list.addFirst(init.word);
+        list.add(0,init.word);
     }
     public int moves() {
         return move;
