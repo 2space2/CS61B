@@ -46,7 +46,7 @@ public class Solver {
          move = init.moves;
         list = new ArrayList<>();
         while (!init.word.equals(initial)) {
-            list.addFirst(init.word);
+            list.add(0,init.word);
             init = init.prev;
         }
         list.addFirst(init.word);
